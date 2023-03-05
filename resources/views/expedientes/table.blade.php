@@ -8,6 +8,7 @@
         <th>Circunscripcion</th>
         <th>Juzgado</th>
         <th>Cliente</th>
+        <th>Fuero</th>
          <th>Estado</th>
         <th>Accion</th>
         </tr>
@@ -18,11 +19,12 @@
             <td>{{ $expediente->numero }}</td>
             <td>{{ $expediente->anho }}</td>
             <td>{{ $expediente->caratula }}</td>
-            <td>{{ $expediente->circunscripcion->nombrecir }}</td>
-            <td>{{ $expediente->juzgado->nombrejuz}}</td>
+            <td>{{ $expediente->circunscripcion->nombrecir ?? 'Circunscripcion no asignado'}}</td>
+            <td>{{ $expediente->juzgado->nombrejuz ?? 'Juzgado no asignado'}}</td>
            <td> @foreach($expediente->clientes as $e)
             {{ $e->nombre}}
             @endforeach </td>
+            <td>{{ $expediente->fuero->nombre_fuero ?? 'Fuero no asignado'}}</td>
             <td>@switch(true)
             @case($expediente->estado == 'Activo')
             <span class="badge badge-primary"> {{ $expediente->estado }} </span>
@@ -53,7 +55,6 @@
                            <button type="button" class="btn btn-warning"> <i class="far fa-edit"></i></button>
                         </a>
                         
-    
                          @can('ver-pago')
                         <form method="POST" action="{{ url("expedientes/{$expediente->id}") }}">
                           @csrf
@@ -61,6 +62,7 @@
                           <a class="class='btn btn-default btn-xs">
                         <button type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro?')"><i class="fa fas-solid fa-trash"></i></button>
                         </form></a>
+                       
                          @endcan
                     </div>
                     {!! Form::close() !!}

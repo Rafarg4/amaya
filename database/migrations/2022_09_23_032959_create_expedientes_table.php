@@ -22,10 +22,12 @@ class CreateExpedientesTable extends Migration
             $table->text('estado');
             $table->unsignedBigInteger('id_juzgado');
             $table->unsignedBigInteger('id_circunscripcion');
+            $table->unsignedBigInteger('id_fuero');
             $table->timestamps();
             $table->softDeletes();
            $table->foreign('id_juzgado')->references('id')->on('juzgados');
             $table->foreign('id_circunscripcion')->references('id')->on('circunscripcions');
+            $table->foreign('id_fuero')->references('id')->on('fueros');
         });
     }
 

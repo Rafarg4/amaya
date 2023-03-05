@@ -36,6 +36,7 @@ class Expediente extends Model
         'caratula',
         'id_circunscripcion',
         'id_juzgado',
+        'id_fuero',
         'estado'
     ];
 
@@ -69,6 +70,10 @@ class Expediente extends Model
      return $this->belongsTo(Circunscripcion::class,'id_circunscripcion');
 
     }
+    public function fuero (){
+     return $this->belongsTo(Fuero::class,'id_fuero');
+
+    }
 
     public function gasto_expediente (){
      return $this-> hasMany('App\Models\Gasto_expediente');
@@ -80,6 +85,10 @@ class Expediente extends Model
     }
     public function clientes (){
      return $this->belongsToMany(Cliente::class);
+
+    }
+    public function audiencia (){
+     return $this-> hasMany('App\Models\Audiencias');
 
     }
 

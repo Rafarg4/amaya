@@ -79,3 +79,10 @@ Route::resource('pdf', App\Http\Controllers\PdfController::class);
 
 Route::get('graficos/index', [App\Http\Controllers\GraficoController::class, 'grafico'])->name('graficos');
 Route::get('audiencias/consulta', [App\Http\Controllers\Consulta_audiencaController::class, 'consulta'])->name('consultas');
+
+Route::resource('fueros', App\Http\Controllers\FueroController::class);
+
+
+Route::get('consultas', [App\Http\Controllers\ReporteController::class, 'consulta_expediente'])->name('consultas.expedientes');
+
+Route::resource('seguimintos', App\Http\Controllers\SeguimintoController::class);

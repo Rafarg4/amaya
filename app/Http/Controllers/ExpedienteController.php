@@ -16,6 +16,8 @@ use App\Models\Expediente;
 use App\Models\Cliente;
 use App\Models\Gasto_expediente;
 use App\Models\Pago_expediente;
+use App\Models\Fuero;
+use App\Models\Seguiminto;
 use DB;
 class ExpedienteController extends AppBaseController
 {
@@ -36,8 +38,8 @@ class ExpedienteController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $expedientes = Expediente::with(['clientes'])->get();
-
+        
+        $expedientes = Expediente::all();
         return view('expedientes.index',compact('expedientes'));
             
     }
@@ -52,7 +54,8 @@ class ExpedienteController extends AppBaseController
           $circunscripcions = Circunscripcion::pluck('nombrecir','id');
           $juzgados = Juzgado::pluck('nombrejuz','id');
           $clientes = Cliente::pluck('nombre','id');
-          return view('expedientes.create',compact('circunscripcions','juzgados','clientes'));
+          $fueros = Fuero::pluck('nombre_fuero','id');
+          return view('expedientes.create',compact('circunscripcions','juzgados','clientes','fueros'));
     }
 
     /**
@@ -83,6 +86,7 @@ class ExpedienteController extends AppBaseController
         $expediente = $this->expedienteRepository->find($id);
         $gastoExpedientes = Gasto_expediente::where('id_expediente',$id)->get();
         $pagoExpedientes = Pago_expediente::where('id_expediente',$id)->get();
+        $seguimientos = Seguiminto::where('id_expediente',$id)->get();
         $pago_total = Pago_expediente::where('id_expediente',$id)->sum('monto'); 
         $gasto_total = Gasto_expediente::where('id_expediente',$id)->sum('monto_gasto');
         $ingreso = Pago_expediente::select(
@@ -123,7 +127,7 @@ class ExpedienteController extends AppBaseController
 
             return redirect(route('expedientes.index'));
         }
-        return view('expedientes.show')->with('expediente', $expediente)->with('gastoExpedientes', $gastoExpedientes)->with('pagoExpedientes', $pagoExpedientes)->with('pago_total', $pago_total)->with('gasto_total', $gasto_total)->with('ingreso_var', $ingreso_var)->with('egreso_var', $egreso_var);
+        return view('expedientes.show')->with('expediente', $expediente)->with('gastoExpedientes', $gastoExpedientes)->with('pagoExpedientes', $pagoExpedientes)->with('pago_total', $pago_total)->with('gasto_total', $gasto_total)->with('ingreso_var', $ingreso_var)->with('egreso_var', $egreso_var)->with('seguimientos', $seguimientos);
     }
 
     /**
@@ -139,13 +143,14 @@ class ExpedienteController extends AppBaseController
         $circunscripcions = Circunscripcion::pluck('nombrecir','id');
         $juzgados = Juzgado::pluck('nombrejuz','id');
         $clientes = Cliente::pluck('nombre','id');
+        $fueros = Fuero::pluck('nombre_fuero','id');
         if (empty($expediente)) {
             Flash::error('Expediente no encontrado');
 
             return redirect(route('expedientes.index'));
         }
 
-        return view('expedientes.edit', compact('expediente','circunscripcions','juzgados','clientes'));
+        return view('expedientes.edit', compact('expediente','circunscripcions','juzgados','clientes','fueros'));
     }
 
     /**

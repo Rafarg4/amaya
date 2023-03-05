@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1>Editar Expediente</h1>
+                    <h1>Edit Seguiminto</h1>
                 </div>
             </div>
         </div>
@@ -17,17 +17,17 @@
 
         <div class="card">
 
-            {!! Form::model($expediente, ['route' => ['expedientes.update', $expediente->id], 'method' => 'patch']) !!}
+            {!! Form::model($seguiminto, ['route' => ['seguimintos.update', $seguiminto->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
                 <div class="row">
-                    @include('expedientes.fields')
+                    @include('seguimintos.fields')
                 </div>
             </div>
 
             <div class="card-footer">
-                {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('expedientes.index') }}" class="btn btn-default">Cancelar</a>
+                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                <a href="{{ route('seguimintos.index') }}" class="btn btn-default">Cancel</a>
             </div>
 
             {!! Form::close() !!}

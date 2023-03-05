@@ -60,15 +60,14 @@
 
         </div>
 </div>
+<div class="form-group col-sm-6">
+    {!! Form::label('id_fuero', 'Fuero:') !!}
+    {!! Form::select('id_fuero', $fueros, null, ['class' => 'form-control js-example-responsive','id' => 'fuero','required','placeholder'=>'Seleccione']) !!}
+</div>
 <div class=" form-group col-sm-6">
  {!! Form::label('estado', 'Estado:') !!}
 {!! Form::select('estado',array('Activo' => 'Activo', 'Paralizado' => 'Paralizado','Finalizado' => 'Finalizado'),null, ['class' => 'form-control','placeholder'=>'Seleccione','required'])!!}
 </div>
-<!-- Button trigger modal -->
 
-
-
-
-<!-- Button trigger modal -->
 
         

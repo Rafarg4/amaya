@@ -19,5 +19,11 @@ ORDER BY `caratula` ASC");
 
 
     }
+    public function consulta_expediente()
+    {
+    	 $consulta_expediente = Expediente::all();
+        return view('consultas.expedientes',compact('consulta_expediente'));
+
+    }
 }
 

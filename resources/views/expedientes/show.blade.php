@@ -39,7 +39,18 @@
            <section class="content-header">
         <div class="container-fluid">
               <div class=row>
-                  
+                  <div class="col-lg-12">
+                      <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Seguimientos</h3>
+                                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal2"><i class="fas fa-plus"></i>Añadir seguimiento</button>
+                            </div>
+                             <div class="card-body">
+                                @include('expedientes.seguimientos')
+                                
+                            </div>
+                      </div>
+                  </div>
                  <div class="col-lg-6">
                       <div class="card">
                             <div class="card-header">
@@ -65,6 +76,7 @@
                       </div>
                   </div>  
               </div>
+              
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -323,5 +335,104 @@
    
    
    </script>
-<!-- MODAL PARA GASTO -->
+
+
+
+
+<!-- MODAL PARA SEGUIMIENTO -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Cargar nuevo seguimiento</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+   
+  <div class="content px-3">
+
+        @include('adminlte-templates::common.errors')
+
+        <div class="card">
+
+        <form id="seguimiento_expediente_modal" action="javascript:;" method="post" enctype="multipart/form-data">
+            @csrf
+            
+
+            <div class="card-body">
+
+                <div class="row">
+                    @include('seguimintos.fields')
+                </div>
+
+            </div>
+
+            <div class="card-footer">
+              
+               
+            </div>
+
+           
+
+        </div>
+    </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-secondary" id="prueba" data-dismiss="modal">Cerrar</button>
+          {!! Form::submit('Guardar', ['class' => 'btn btn-primary', 'id' => 'submit2']) !!}
+           </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+   
+        $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+     $('#seguimiento_expediente_modal').submit(function(e) {
+        let formData = new FormData(this);
+
+         $.ajax({
+            type:'POST',
+            url: "/seguimintos",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: (response) => {
+                location.reload(true);
+                    this.reset();
+                
+            },
+            error: function(response){
+                console.log(response.responseJSON.message);
+            }
+       });
+    });
+   
+   
+   </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @endsection

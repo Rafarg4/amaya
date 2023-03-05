@@ -31,6 +31,13 @@
     </a>
 </li>
 <li class="nav-item">
+    <a href="{{ route('fueros.index') }}"
+       class="nav-link {{ Request::is('fueros*') ? 'active' : '' }}">
+       <i class="fa fas-solid fa-building"></i>
+        <p>Fueros</p>
+    </a>
+</li>
+<li class="nav-item">
     <a href="{{ route('clientes.index') }}"
        class="nav-link {{ Request::is('clientes*') ? 'active' : '' }}">
        <i class="fa fas-regular fa-clipboard"></i>
@@ -55,10 +62,17 @@
   </li>
 <li class="nav-item">
 <a href="{{route('consultas')}}" class="nav-link"
-    class="nav-link {{ Request::is('consultas*') ? 'active' : '' }}">
+    class="nav-link {{ Request::is('audiencias/consulta*') ? 'active' : '' }}">
 <i class="fa fas-solid fa-list"></i>
 <p>Consulta audiencias
 </p>
+</a>
+</li>
+<li class="nav-item">
+<a href="{{ route('consultas.expedientes') }}" 
+  class="nav-link {{ Request::is('consultas*') ? 'active' : '' }}">
+<i class="fa fas-solid fa-list"></i>
+<p>Consulta de expediente</p>
 </a>
 </li>
      @can('ver-pago')
@@ -73,7 +87,7 @@
 
 <li class="nav-item">
 <a href="{{route('graficos')}}" class="nav-link"
-    class="nav-link {{ Request::is('graficos*') ? 'active' : '' }}">
+    class="nav-link {{ Request::is('graficos/index*') ? 'active' : '' }}">
 <i class="fa fas-solid fa fa-chart-bar"></i>
 <p>Graficos
 </p>
@@ -89,7 +103,14 @@
     </a>
 </li>
 @endcan
+<li class="nav-item">
+    <a href="" 
+       class="nav-link " onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+      <i class="fas fa-sign-out-alt"></i>
+        <p>Salir</p>
 
+    </a>
+</li>
 
 
 

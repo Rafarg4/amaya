@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1>Editar Expediente</h1>
+                    <h1>Crear Fuero</h1>
                 </div>
             </div>
         </div>
@@ -17,17 +17,19 @@
 
         <div class="card">
 
-            {!! Form::model($expediente, ['route' => ['expedientes.update', $expediente->id], 'method' => 'patch']) !!}
+            {!! Form::open(['route' => 'fueros.store']) !!}
 
             <div class="card-body">
+
                 <div class="row">
-                    @include('expedientes.fields')
+                    @include('fueros.fields')
                 </div>
+
             </div>
 
             <div class="card-footer">
                 {!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('expedientes.index') }}" class="btn btn-default">Cancelar</a>
+                <a href="{{ route('fueros.index') }}" class="btn btn-default">Cancelar</a>
             </div>
 
             {!! Form::close() !!}
