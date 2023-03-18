@@ -33,8 +33,9 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-     <center> <img src="/98.png" width="200" height="200" class="img-circle" alt="User Image"/></center>
+     
     <div class="login-logo">
+
         <a href="{{ url('/home') }}"><b></b></a>
     </div>
 
@@ -42,6 +43,7 @@
 
     <!-- /.login-box-body -->
     <div class="card">
+        <center> <img src="/98.png" width="200" height="200" class="img-circle" alt="User Image"/></center>
         <div class="card-body login-card-body">
             <p class="login-box-msg">Iniciar Sesion </p>
 

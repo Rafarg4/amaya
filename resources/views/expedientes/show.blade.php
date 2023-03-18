@@ -75,7 +75,41 @@
                             </div>
                       </div>
                   </div>  
+                  <div class="col-lg-12">
+                      <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Detalles de cuenta</h3>
+                            </div>
+                             <div class="card-body">
+                               <table class="table" id="myTable">
+                              <thead>
+                              <tr>
+                                  <th>Debe </th>
+                              <th>Haberes</th>
+                              <th>Saldo</th>
+                             
+                              </tr>
+                              </thead>
+                              <tbody>
+                          
+                                  <tr>
+                                      <td>{{number_format ($gasto_total) }} Gs</td>
+                                  <td>{{number_format ($pago_total) }} Gs</td>
+                                  @if($gasto_total <$pago_total)
+                                  <th><span class="badge badge-success">Disponible {{number_format ($resultado=$pago_total-$gasto_total)}} Gs </span></th>
+                                  @else
+                                  <td><span class="badge badge-danger">A pagar {{number_format ($resultado=$pago_total-$gasto_total)}} Gs</span></td>
+                                 @endif
+                                </tr>
+                              
+                              </tbody>
+                          </table>
+                                
+                            </div>
+                      </div>
+                  </div>
               </div>
+
               
     <section class="content-header">
         <div class="container-fluid">
@@ -175,7 +209,7 @@
 
 <!-- MODAL PARA PAGOS -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Cargar un nuevo pago</h5>
@@ -258,7 +292,7 @@
 
 <!-- MODAL PARA GASTOS-->
 <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel1">Cargar un nuevo gasto</h5>

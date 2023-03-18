@@ -1,10 +1,10 @@
 <div class="table-responsive">
-    <table class="table" id="seguimintos-table">
+      <table class="table" id="myTable2">
         <thead>
         <tr>
             <th>Descripcion</th>
         <th>Fecha</th>
-            <th colspan="3">Action</th>
+            <th >Accion</th>
         </tr>
         </thead>
         <tbody>

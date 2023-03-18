@@ -1,5 +1,19 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#pagos').DataTable({
+          "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+            },
+        "dom": "Bftrip",
+            
+            "buttons": [
+            'copy', 'excel', 'pdf'
+        ]
+    });
+});
+  </script>
 <div class="table-responsive">
-    <table class="table" id="example1">
+      <table class="table" id="pagos">
         <thead>
         <tr>
              <th style="display:none;">id</th>
@@ -39,7 +53,7 @@
                 <td></td>
                 <td></td>
                 <td><b>Total de Pagos:</b></td>
-                <td><b>{{number_format ($pago_total) }}</b></td>
+                <td><b>{{number_format ($pago_total) }} Gs</b></td>
     </tr>
   </tfoot>
     </table>

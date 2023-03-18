@@ -45,4 +45,8 @@ class User extends Authenticatable
         'email' => 'required|email|unique:users',
         'password' => 'required|min:8',
     ];
+    public static $updateRules = [
+        'name' => 'required',
+        'email' => 'required|email',
+    ];
 }

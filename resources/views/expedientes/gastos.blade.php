@@ -1,5 +1,19 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#gastos').DataTable({
+          "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+            },
+        "dom": "Bftrip",
+            
+            "buttons": [
+            'copy', 'excel', 'pdf'
+        ]
+    });
+});
+  </script>
 <div class="table-responsive">
-    <table class="table" id="gastoExpedientes-table">
+  <table class="table" id="gastos">
         <thead>
         <tr>
             <th style="display:none;">id</th>
@@ -39,7 +53,7 @@
                 <td></td>
                 <td></td>
                 <td><b>Total de Gastos:</b></td>
-                <td><b>{{number_format ($gasto_total) }}</b></td>
+                <td><b>{{number_format ($gasto_total) }} Gs</b></td>
     </tr>
   </tfoot>
     </table>

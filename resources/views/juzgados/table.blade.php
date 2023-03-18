@@ -6,7 +6,7 @@
         <th>Juez</th>
         <th>Secretario</th>
           <th>Ujier</th>
-          <th>telefono</th>
+          <th>Telefono</th>
           <th>Circunscripcion</th>
             <th>Accion</th>
         </tr>
@@ -19,7 +19,7 @@
             <td>{{ $juzgado->secretario }}</td>
                <td>{{ $juzgado->ujier }}</td>
                 <td>{{ $juzgado->telefono }}</td>
-             <td>{{ $juzgado->cir->nombrecir  }}</td>
+             <td>{{ $juzgado->cir->nombrecir  ?? 'Sin asignar'  }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['juzgados.destroy', $juzgado->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
